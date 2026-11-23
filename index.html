@@ -10,12 +10,13 @@
 <body>
 
   <nav class="site-nav">
-    <div class="wrap nav-capsule">
+    <div class="wrap nav-row">
+      <a href="index.html" class="brand">Swagat</a>
       <ul class="nav-links">
-        <li><a href="index.html" aria-current="page">Home</a></li>
         <li><a href="work.html">Work</a></li>
+        <li><a href="index.html#experience">Experience</a></li>
+        <li><a href="index.html#beyond">Beyond</a></li>
         <li><a href="cv.html">CV</a></li>
-        <li><a href="about.html">About</a></li>
         <li><a href="about.html#contact">Contact</a></li>
       </ul>
       <button class="nav-toggle" aria-label="Toggle menu" aria-expanded="false"><span></span><span></span><span></span></button>
@@ -23,150 +24,194 @@
   </nav>
 
   <header class="hero">
-    <div class="hero-bgword" aria-hidden="true">BUILD&nbsp;IT</div>
-    <div class="wrap hero-center">
-      <span class="hero-intro-badge"><span class="wave">👋</span> Hello!</span>
-      <h1 class="hero-headline-center">I'm <span class="accent">Swagat</span> — Software Engineer</h1>
-
-      <div class="hero-stage">
-        <div class="hero-evidence left">
-          <a class="evidence-item" href="work.html#clearscan">
-            <span class="label">ClearScan <span class="arrow-icon">→</span></span>
-            <span class="stat">Live product · 1000+ scans, 87 users</span>
-          </a>
-          <a class="evidence-item" href="work.html#fullproof">
-            <span class="label">Fullproof Toolkit <span class="arrow-icon">→</span></span>
-            <span class="stat">Methodology · DOI archived on Zenodo</span>
-          </a>
-        </div>
-
-        <div class="hero-visual">
-          <div class="hero-glow" aria-hidden="true"></div>
-          <div class="hero-disc" aria-hidden="true"></div>
-          <img class="hero-cutout" src="assets/portrait_cutout.webp" alt="Swagat Kalita" width="900" height="995">
-        </div>
-
-        <div class="hero-evidence right">
-          <a class="evidence-item" href="work.html#flashbuy">
-            <span class="label">FlashBuy <span class="arrow-icon">→</span></span>
-            <span class="stat">Chaos-tested · zero oversold @ 500 users</span>
-          </a>
-          <a class="evidence-item" href="work.html#sopipeline">
-            <span class="label">Survey Pipeline <span class="arrow-icon">→</span></span>
-            <span class="stat">154K+ rows · 1 failure caught</span>
-          </a>
+    <div class="wrap hero-grid">
+      <div class="hero-text">
+        <p class="hero-eyebrow">Hello, I'm Swagat.</p>
+        <h1 class="hero-title">Software engineer.</h1>
+        <p class="hero-sub">Backend systems &amp; data pipelines.</p>
+        <p class="hero-meta">M.Sc. student · Germany / EU job search</p>
+        <div class="hero-links">
+          <a href="#work" class="primary">Selected work ↓</a>
+          <a href="assets/Swagat_Kalita_CV.pdf" class="secondary" download>View CV ↗</a>
+          <a href="https://github.com/swagatskalita092" target="_blank" rel="noopener" class="secondary">GitHub ↗</a>
         </div>
       </div>
-
-      <div class="cta-pill">
-        <a href="work.html" class="cta-seg solid">View my work ↗</a>
-        <a href="assets/Swagat_Kalita_CV.pdf" class="cta-seg glass" download>Download CV ↓</a>
+      <div class="hero-photo">
+        <img src="assets/portrait.jpg" alt="Swagat Kalita" width="900" height="1125">
       </div>
     </div>
   </header>
 
-  <section>
+  <section id="work">
     <div class="wrap">
       <div class="section-head reveal">
-        <span class="section-eyebrow">Selected work</span>
-        <h2>Four projects. Every claim traced to a real test.</h2>
-        <p>Not feature lists — each one is built around a specific invariant, broken on purpose, and documented honestly including the bugs that were actually found.</p>
+        <span class="section-eyebrow">01 / Selected work</span>
+        <h2>Engineering, with evidence.</h2>
       </div>
 
-      <div class="project-grid">
+      <div class="evidence-list">
 
-        <article class="project-card reveal">
-          <div class="tag-row">
-            <span class="tag accent">Live product</span>
-            <span class="tag">FastAPI · React · Supabase</span>
+        <article class="evidence-project reveal">
+          <div class="ep-main">
+            <span class="ep-num">01 / Product</span>
+            <h3>ClearScan</h3>
+            <p class="ep-sub">A live product with paying users.</p>
+            <p class="ep-desc">A real, live resume-scoring and job-matching platform — not a demo. Built and run end to end: a deterministic TF-IDF scoring engine, Supabase Auth and PostgreSQL with Row Level Security, and Stripe Checkout with idempotent signed webhooks.</p>
+            <p class="ep-tags">FastAPI · React · Supabase · Stripe</p>
+            <a href="work.html#clearscan" class="ep-link">Read the product case study ↗</a>
           </div>
-          <h3>ClearScan</h3>
-          <div class="role">Software Engineer · Apr 2026 — Present</div>
-          <p>A real, live resume-scoring and job-matching platform — not a demo. Built and run end to end, from a deterministic scoring engine to Stripe billing.</p>
-          <div class="stat-row">
-            <div class="stat"><b>1000+</b><span>Scans run</span></div>
-            <div class="stat"><b>87</b><span>Registered users</span></div>
-            <div class="stat"><b>238</b><span>Automated tests</span></div>
-          </div>
-          <div class="card-links">
-            <a href="https://clearscan.fyi" target="_blank" rel="noopener">Live site ↗</a>
-            <a href="https://github.com/swagatskalita092/clearscan-engineering" target="_blank" rel="noopener">Engineering dossier ↗</a>
-          </div>
+          <aside class="ep-evidence">
+            <span class="ep-evidence-label">Live product</span>
+            <ul>
+              <li>87 registered users</li>
+              <li>1000+ scans run</li>
+              <li>238 tests, CI/CD</li>
+            </ul>
+          </aside>
         </article>
 
-        <article class="project-card reveal reveal-delay-1">
-          <div class="tag-row">
-            <span class="tag accent">Chaos-tested</span>
-            <span class="tag">FastAPI · Postgres · Redis</span>
+        <article class="evidence-project reveal">
+          <div class="ep-main">
+            <span class="ep-num">02 / Systems</span>
+            <h3>FlashBuy</h3>
+            <p class="ep-sub">A split-brain failure. A fencing-token fix.</p>
+            <p class="ep-desc">A flash-sale checkout backend built around one invariant: fixed stock is never oversold, no matter how many buyers hit it at once — row-level locking, idempotency keys, and leader election, then the leader, Redis, and Postgres were killed mid-sale on purpose to prove it holds.</p>
+            <p class="ep-tags">FastAPI · PostgreSQL · Redis · Locust</p>
+            <a href="work.html#flashbuy" class="ep-link">Read the failure investigation ↗</a>
           </div>
-          <h3>FlashBuy</h3>
-          <div class="role">Flash-sale checkout backend</div>
-          <p>Row-level locking, idempotency keys, and a Redis waiting room — then the leader, Redis, and Postgres were killed mid-sale on purpose to prove it holds.</p>
-          <div class="stat-row">
-            <div class="stat"><b>500/500</b><span>Checkouts, zero oversold</span></div>
-            <div class="stat"><b>p99 1.2s</b><span>Under 500 users</span></div>
-          </div>
-          <div class="card-links">
-            <a href="https://github.com/swagatskalita092/flashbuy" target="_blank" rel="noopener">GitHub ↗</a>
-            <a href="work.html#flashbuy">Failure sequence →</a>
-          </div>
+          <aside class="ep-evidence">
+            <span class="ep-evidence-label">Chaos-tested</span>
+            <ul>
+              <li>Fault: split-brain gap</li>
+              <li>Fix: epoch fencing token</li>
+              <li>500/500, zero oversold</li>
+            </ul>
+          </aside>
         </article>
 
-        <article class="project-card reveal reveal-delay-2">
-          <div class="tag-row">
-            <span class="tag accent">Data correctness</span>
-            <span class="tag">Airflow · dbt · Postgres</span>
+        <article class="evidence-project reveal">
+          <div class="ep-main">
+            <span class="ep-num">03 / Data</span>
+            <h3>Survey Pipeline</h3>
+            <p class="ep-sub">Protecting publication from silently wrong data.</p>
+            <p class="ep-desc">An Airflow + dbt + PostgreSQL pipeline over 154,000+ real Stack Overflow Developer Survey responses, built on a candidate/publish pattern so a bad or partial run can never become the published answer — tested with six hand-run failure injections against a real stack.</p>
+            <p class="ep-tags">Airflow · dbt · PostgreSQL · Docker</p>
+            <a href="work.html#sopipeline" class="ep-link">Read the investigation ↗</a>
           </div>
-          <h3>Stack Overflow Pipeline</h3>
-          <div class="role">Survey analytics pipeline, 2 years of data</div>
-          <p>A candidate/publish pattern so a bad run can never become the published answer — six real failures injected by hand, one of which genuinely got through first.</p>
-          <div class="stat-row">
-            <div class="stat"><b>154K+</b><span>Survey rows, 2 years</span></div>
-            <div class="stat"><b>7</b><span>Data-quality checks</span></div>
-          </div>
-          <div class="card-links">
-            <a href="https://github.com/swagatskalita092/Stack_Overflow_Pipeline" target="_blank" rel="noopener">GitHub ↗</a>
-            <a href="work.html#sopipeline">Failure sequence →</a>
-          </div>
+          <aside class="ep-evidence">
+            <span class="ep-evidence-label">Data correctness</span>
+            <ul>
+              <li>154K+ survey rows</li>
+              <li>1 of 6 injections got through</li>
+              <li>7 quality checks, 4 block</li>
+            </ul>
+          </aside>
         </article>
 
-        <article class="project-card reveal reveal-delay-3">
-          <div class="tag-row">
-            <span class="tag accent">Open source</span>
-            <span class="tag">13 Claude skills · CI</span>
+        <article class="evidence-project reveal">
+          <div class="ep-main">
+            <span class="ep-num">04 / Methodology</span>
+            <h3>Fullproof Project Toolkit</h3>
+            <p class="ep-sub">A repeatable method for interview-ready engineering.</p>
+            <p class="ep-desc">The phase-by-phase method behind the three projects above, written down as a public repo so anyone can follow it: name the risks, build in phases, test adversarially, document honestly. Thirteen importable Claude skills, nine docs, a tagged v1.0.0 release.</p>
+            <p class="ep-tags">Methodology · 13 Claude skills · CI</p>
+            <a href="work.html#fullproof" class="ep-link">Explore the repository ↗</a>
           </div>
-          <h3>Fullproof Project Toolkit</h3>
-          <div class="role">Public methodology + skills, v1.0.0</div>
-          <p>The actual phase-by-phase method behind the three projects above, written down so anyone can follow it — idea to risk to adversarial proof to honest writeup.</p>
-          <div class="stat-row">
-            <div class="stat"><b>13</b><span>Importable skills</span></div>
-            <div class="stat"><b>DOI</b><span>Archived on Zenodo</span></div>
-          </div>
-          <div class="card-links">
-            <a href="https://github.com/swagatskalita092/fullproof-project-toolkit" target="_blank" rel="noopener">GitHub ↗</a>
-          </div>
+          <aside class="ep-evidence">
+            <span class="ep-evidence-label">Open source</span>
+            <ul>
+              <li>13 importable skills</li>
+              <li>9 methodology docs</li>
+              <li>DOI archived on Zenodo</li>
+            </ul>
+          </aside>
         </article>
 
       </div>
     </div>
   </section>
 
-  <section class="alt-bg">
+  <section class="alt-bg" id="experience">
     <div class="wrap">
-      <div class="section-head reveal" style="text-align:center; margin-left:auto; margin-right:auto;">
-        <span class="section-eyebrow">Why it's built this way</span>
-        <h2>Nothing claimed that wasn't proven.</h2>
-        <p style="margin-left:auto; margin-right:auto;">Every number on this site traces to a real test, a real commit, or a real run — the same rigor the Fullproof Project Toolkit exists to teach. No fabricated metrics, no rounded-up claims.</p>
+      <div class="section-head-row reveal">
+        <div class="section-head" style="margin-bottom:0;">
+          <span class="section-eyebrow">02 / Experience</span>
+          <h2>Experience.</h2>
+        </div>
+        <a href="cv.html" class="section-link">Full CV ↗</a>
+      </div>
+
+      <div class="exp-list">
+        <div class="exp-item reveal">
+          <div class="exp-role">Software Engineer, ClearScan (independent product)</div>
+          <div class="exp-org"><span>clearscan.fyi — live resume-scoring and job-matching platform</span><span>Apr 2026 — Present</span></div>
+          <ul>
+            <li>Built and run end to end: React frontend, FastAPI backend, Supabase Auth and PostgreSQL with Row Level Security.</li>
+            <li>Deterministic TF-IDF scoring engine, Stripe Checkout with idempotent signed webhooks, 238 tests in CI.</li>
+          </ul>
+        </div>
+
+        <div class="exp-item reveal">
+          <div class="exp-role">Data Analyst Intern</div>
+          <div class="exp-org"><span>InfoTech Solution — IT &amp; Telecom System Integrator</span><span>Nov 2023 — Aug 2024</span></div>
+          <ul>
+            <li>Consolidated manual Excel sources into a single SQL-driven reporting layer, cutting KPI prep from 3 hours to under 1.</li>
+            <li>Validated batches of 10K+ records using SQL, Python, Excel and Power BI.</li>
+          </ul>
+        </div>
+
+        <div class="exp-item reveal">
+          <div class="exp-role">Software Engineering Intern</div>
+          <div class="exp-org"><span>Trubits (Libresoft Technology Pvt. Ltd.)</span><span>Jul 2023 — Oct 2023</span></div>
+          <ul>
+            <li>Built a prototype internal file management system with Django, PostgreSQL, HTML/CSS/JS — upload, search, sharing.</li>
+            <li>Designed the relational schema and cut average query runtime from 9s to 5s by indexing and restructuring.</li>
+          </ul>
+        </div>
+
+        <div class="exp-item reveal">
+          <div class="exp-role">M.Sc. Informatik</div>
+          <div class="exp-org"><span>University of Passau</span><span>2024 — Expected 2027</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="beyond">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <span class="section-eyebrow">03 / Beyond engineering</span>
+        <h2>Away from the keyboard.</h2>
+      </div>
+
+      <div class="beyond-grid">
+        <div class="beyond-photo placeholder reveal">
+          <span>Tennis photo — swap in once sent</span>
+        </div>
+
+        <div class="reveal reveal-delay-1">
+          <div class="beyond-block">
+            <h3>Tennis</h3>
+            <p>I play competitive tennis — currently on TC Rot-Weiss Passau's men's team in the BTV league.</p>
+          </div>
+          <div class="beyond-block">
+            <h3>More about me</h3>
+            <p>I'm originally from Guwahati, India. I'm also learning German, currently working toward B1.</p>
+          </div>
+        </div>
       </div>
     </div>
   </section>
 
   <footer>
-    <div class="wrap footer-row">
-      <div class="footer-links">
-        <a href="https://github.com/swagatskalita092" target="_blank" rel="noopener">GitHub</a>
-        <a href="https://linkedin.com/in/swagat-s-kalita" target="_blank" rel="noopener">LinkedIn</a>
-        <a href="mailto:swagatskalita2001@gmail.com">Email</a>
+    <div class="wrap">
+      <div class="footer-cta reveal">
+        <h2>Let's get in touch.</h2>
+        <div class="footer-links">
+          <a href="mailto:swagatskalita2001@gmail.com">Email ↗</a>
+          <a href="https://linkedin.com/in/swagat-s-kalita" target="_blank" rel="noopener">LinkedIn ↗</a>
+          <a href="https://github.com/swagatskalita092" target="_blank" rel="noopener">GitHub ↗</a>
+        </div>
       </div>
       <div class="footer-note">© <span data-year></span> Swagat Kalita. Passau, Germany.</div>
     </div>
