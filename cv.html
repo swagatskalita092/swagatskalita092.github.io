@@ -1,0 +1,149 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>CV — Swagat Kalita</title>
+  <meta name="description" content="CV — Swagat Subhash Kalita, Software Engineer.">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+  <nav class="site-nav">
+    <div class="wrap">
+      <a href="index.html" class="brand">Swagat<span>.</span></a>
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="work.html">Work</a></li>
+        <li><a href="cv.html" aria-current="page">CV</a></li>
+        <li><a href="about.html">About</a></li>
+      </ul>
+      <a href="about.html#contact" class="nav-cta">Get in touch</a>
+      <button class="nav-toggle" aria-label="Toggle menu" aria-expanded="false"><span></span><span></span><span></span></button>
+    </div>
+  </nav>
+
+  <div class="page-hero wrap" style="padding-bottom:0;">
+    <h1>CV</h1>
+    <p>The same facts as the PDF below — rendered as a page so it's readable without a download first.</p>
+    <a href="assets/Swagat_Kalita_CV.pdf" class="btn btn-primary" download style="margin-top:14px;">Download PDF ↓</a>
+  </div>
+
+  <section>
+    <div class="wrap" style="max-width: 880px;">
+      <div class="cv-shell reveal">
+
+        <div class="cv-header">
+          <h1>Swagat Subhash Kalita</h1>
+          <div class="cv-contact">
+            Passau, Germany (open to relocation)<span class="sep">·</span>
+            <a href="mailto:swagatskalita2001@gmail.com">swagatskalita2001@gmail.com</a><span class="sep">·</span>
+            <a href="https://linkedin.com/in/swagat-s-kalita" target="_blank" rel="noopener">LinkedIn</a><span class="sep">·</span>
+            <a href="https://github.com/swagatskalita092" target="_blank" rel="noopener">GitHub</a>
+          </div>
+        </div>
+
+        <div class="cv-section">
+          <h2>Education</h2>
+          <div class="cv-entry">
+            <div class="cv-entry-head"><span>University of Passau</span><span>2024 — Expected 2027</span></div>
+            <div class="cv-entry-sub"><span>Master of Science, Informatik</span><span>Passau, Germany</span></div>
+          </div>
+          <div class="cv-entry">
+            <div class="cv-entry-head"><span>SRM Institute of Science and Technology</span><span>2020 — 2024</span></div>
+            <div class="cv-entry-sub"><span>Bachelor of Technology, Computer Science and Engineering</span><span>Chennai, India</span></div>
+          </div>
+        </div>
+
+        <div class="cv-section">
+          <h2>Experience</h2>
+
+          <div class="cv-entry">
+            <div class="cv-entry-head"><span>Software Engineer, ClearScan (independent product)</span><span>Apr 2026 — Present</span></div>
+            <div class="cv-entry-sub"><span><a href="https://clearscan.fyi" target="_blank" rel="noopener">clearscan.fyi</a> — live resume-scoring and job-matching platform</span><span>Remote</span></div>
+            <ul>
+              <li>Built and run ClearScan end to end: React frontend, FastAPI backend, Supabase Auth and PostgreSQL with Row Level Security. Over 1000 scans run and 80+ registered users since launch.</li>
+              <li>Wrote a deterministic scoring engine (scikit-learn TF-IDF, 137-skill taxonomy, 62 O*NET profiles, calibration curve). Anthropic is used for two paid features: bullet rewrites and cover letters.</li>
+              <li>Added Stripe Checkout, idempotent signed webhooks (nine event types) and a database trigger that blocks users from editing their own billing columns.</li>
+              <li>Deployed on Railway and Netlify; 238 tests in GitHub Actions. Known limits are in the public <a href="https://github.com/swagatskalita092/clearscan-engineering" target="_blank" rel="noopener">engineering dossier</a>.</li>
+            </ul>
+          </div>
+
+          <div class="cv-entry">
+            <div class="cv-entry-head"><span>Data Analyst Intern</span><span>Nov 2023 — Aug 2024</span></div>
+            <div class="cv-entry-sub"><span>InfoTech Solution (IT &amp; Telecom System Integrator)</span><span>Guwahati, India (Hybrid)</span></div>
+            <ul>
+              <li>Consolidated 5+ manual Excel sources into a single SQL-driven reporting layer for managers, standardizing metric definitions and cutting KPI preparation time from 3 hours to under 1 hour per reporting cycle.</li>
+              <li>Worked in a small team using SQL, Python, Excel and Power BI to validate batches of 10K+ records and automate reporting cycles, reducing manual upkeep.</li>
+            </ul>
+          </div>
+
+          <div class="cv-entry">
+            <div class="cv-entry-head"><span>Software Engineering Intern</span><span>Jul 2023 — Oct 2023</span></div>
+            <div class="cv-entry-sub"><span>Trubits (Libresoft Technology Pvt. Ltd.)</span><span>Remote</span></div>
+            <ul>
+              <li>Built a prototype internal file management system for company use with Django, HTML, CSS, JavaScript and PostgreSQL: account creation, file upload, modification, deletion, search, and sharing with existing users.</li>
+              <li>Designed the relational schema and SQL for file metadata and user data, then cut average query runtime from 9s to 5s by indexing and restructuring. Worked under a senior manager who guided and reviewed my code.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="cv-section">
+          <h2>Projects</h2>
+
+          <div class="cv-entry">
+            <div class="cv-entry-head"><span>FlashBuy: Flash-Sale Checkout Backend</span><span><a href="https://github.com/swagatskalita092/flashbuy" target="_blank" rel="noopener">GitHub</a></span></div>
+            <div class="cv-entry-sub"><span>FastAPI, PostgreSQL, Redis, Docker, Locust</span></div>
+            <ul>
+              <li>Built a flash-sale checkout API with row-level locking, idempotency keys and a Redis waiting room (20 admissions per second). In a load test with 500 users on three replicas: 500 of 500 checkouts, zero oversold, p99 1.2s.</li>
+              <li>Added leader election with an epoch fencing token after outside feedback; fixed two load bugs. Stopped the leader, Redis and Postgres mid-sale manually: no duplicate orders; Redis loss dropped waiting-room state (documented).</li>
+            </ul>
+          </div>
+
+          <div class="cv-entry">
+            <div class="cv-entry-head"><span>Stack Overflow Survey Analytics Pipeline</span><span><a href="https://github.com/swagatskalita092/Stack_Overflow_Pipeline" target="_blank" rel="noopener">GitHub</a></span></div>
+            <div class="cv-entry-sub"><span>Python, Airflow, dbt, PostgreSQL, Docker</span></div>
+            <ul>
+              <li>Built an Airflow, dbt and PostgreSQL pipeline over 150K+ survey responses (2023, 2024). Each run is a candidate, published only if tests pass, so a failed check keeps the last good release. CI uses hand-calculated fixtures.</li>
+              <li>Tested six failures by hand on a small fixture. A truncated CSV was published, so I added a row-count-drop check with a test (7 checks, 4 stop the run).</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="cv-section">
+          <h2>Technical Skills</h2>
+          <div class="skills-grid">
+            <div><b>Languages:</b> Python, JavaScript, TypeScript, SQL</div>
+            <div><b>Frameworks &amp; Libraries:</b> FastAPI, React, Node.js, Django, Pydantic, Pandas, scikit-learn</div>
+            <div><b>Data &amp; Databases:</b> PostgreSQL, Redis, Supabase, MySQL, Apache Airflow, dbt, AWS (S3, EC2)</div>
+            <div><b>DevOps &amp; Testing:</b> Docker, GitHub Actions (CI/CD), Git, Pytest, Locust</div>
+            <div><b>APIs &amp; Integrations:</b> REST API Design, Supabase Auth (JWT), Google OAuth, Stripe Webhooks, Anthropic API</div>
+          </div>
+        </div>
+
+        <div class="cv-section" style="margin-bottom:0;">
+          <h2>Additional</h2>
+          <div class="skills-grid">
+            <div><b>Languages:</b> English (C1 Professional), German (A2 Beginner)</div>
+            <div><b>Availability:</b> Working student (part-time) or full-time. Roles: Software Engineer, Backend, Full-Stack</div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="wrap footer-row">
+      <div class="footer-links">
+        <a href="https://github.com/swagatskalita092" target="_blank" rel="noopener">GitHub</a>
+        <a href="https://linkedin.com/in/swagat-s-kalita" target="_blank" rel="noopener">LinkedIn</a>
+        <a href="mailto:swagatskalita2001@gmail.com">Email</a>
+      </div>
+      <div class="footer-note">© <span data-year></span> Swagat Kalita. Passau, Germany.</div>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>

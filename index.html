@@ -1,0 +1,174 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Swagat Kalita — Software Engineer</title>
+  <meta name="description" content="Swagat Kalita — Software Engineer building verified, adversarially-tested systems: ClearScan, FlashBuy, the Stack Overflow Pipeline, and the Fullproof Project Toolkit.">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+  <nav class="site-nav">
+    <div class="wrap">
+      <a href="index.html" class="brand">Swagat<span>.</span></a>
+      <ul class="nav-links">
+        <li><a href="index.html" aria-current="page">Home</a></li>
+        <li><a href="work.html">Work</a></li>
+        <li><a href="cv.html">CV</a></li>
+        <li><a href="about.html">About</a></li>
+      </ul>
+      <a href="about.html#contact" class="nav-cta">Get in touch</a>
+      <button class="nav-toggle" aria-label="Toggle menu" aria-expanded="false"><span></span><span></span><span></span></button>
+    </div>
+  </nav>
+
+  <header class="hero">
+    <div class="hero-bgword" aria-hidden="true">BUILD&nbsp;IT</div>
+    <div class="wrap hero-grid">
+      <div class="hero-copy">
+        <span class="hero-eyebrow">Software Engineer · Passau, Germany</span>
+        <h1>I build systems I can <span class="accent">prove</span> work — then write down how.</h1>
+        <p class="lede">M.Sc. Informatik student and software engineer. Four real projects, each adversarially tested and honestly documented: a live SaaS product, a chaos-tested checkout backend, a data pipeline, and an open-source methodology toolkit.</p>
+        <div class="hero-actions">
+          <a href="work.html" class="btn btn-primary">View my work →</a>
+          <a href="assets/Swagat_Kalita_CV.pdf" class="btn btn-ghost" download>Download CV ↓</a>
+        </div>
+      </div>
+
+      <div class="hero-portrait-stage">
+        <div class="fact-card c1">
+          <span class="dot"></span>
+          <div>Live product<small>clearscan.fyi — 1000+ scans run</small></div>
+        </div>
+
+        <div class="portrait-wrap">
+          <div class="hero-glow" aria-hidden="true"></div>
+          <div class="portrait-frame">
+            <img src="assets/portrait.jpg" alt="Portrait of Swagat Kalita" width="900" height="1125">
+          </div>
+        </div>
+
+        <div class="fact-card c2">
+          <span class="dot"></span>
+          <div>Archived & citable<small>Fullproof Toolkit — Zenodo DOI</small></div>
+        </div>
+
+        <div class="fact-card c3">
+          <span class="dot"></span>
+          <div>Chaos-tested<small>FlashBuy — zero oversold @ 500 users</small></div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <section>
+    <div class="wrap">
+      <div class="section-head reveal">
+        <span class="section-eyebrow">Selected work</span>
+        <h2>Four projects. Every claim traced to a real test.</h2>
+        <p>Not feature lists — each one is built around a specific invariant, broken on purpose, and documented honestly including the bugs that were actually found.</p>
+      </div>
+
+      <div class="project-grid">
+
+        <article class="project-card reveal">
+          <div class="tag-row">
+            <span class="tag accent">Live product</span>
+            <span class="tag">FastAPI · React · Supabase</span>
+          </div>
+          <h3>ClearScan</h3>
+          <div class="role">Software Engineer · Apr 2026 — Present</div>
+          <p>A real, live resume-scoring and job-matching platform — not a demo. Built and run end to end, from a deterministic scoring engine to Stripe billing.</p>
+          <div class="stat-row">
+            <div class="stat"><b>1000+</b><span>Scans run</span></div>
+            <div class="stat"><b>87</b><span>Registered users</span></div>
+            <div class="stat"><b>238</b><span>Automated tests</span></div>
+          </div>
+          <div class="card-links">
+            <a href="https://clearscan.fyi" target="_blank" rel="noopener">Live site ↗</a>
+            <a href="https://github.com/swagatskalita092/clearscan-engineering" target="_blank" rel="noopener">Engineering dossier ↗</a>
+          </div>
+        </article>
+
+        <article class="project-card reveal reveal-delay-1">
+          <div class="tag-row">
+            <span class="tag accent">Chaos-tested</span>
+            <span class="tag">FastAPI · Postgres · Redis</span>
+          </div>
+          <h3>FlashBuy</h3>
+          <div class="role">Flash-sale checkout backend</div>
+          <p>Row-level locking, idempotency keys, and a Redis waiting room — then the leader, Redis, and Postgres were killed mid-sale on purpose to prove it holds.</p>
+          <div class="stat-row">
+            <div class="stat"><b>500/500</b><span>Checkouts, zero oversold</span></div>
+            <div class="stat"><b>p99 1.2s</b><span>Under 500 users</span></div>
+          </div>
+          <div class="card-links">
+            <a href="https://github.com/swagatskalita092/flashbuy" target="_blank" rel="noopener">GitHub ↗</a>
+            <a href="work.html#flashbuy">Failure sequence →</a>
+          </div>
+        </article>
+
+        <article class="project-card reveal reveal-delay-2">
+          <div class="tag-row">
+            <span class="tag accent">Data correctness</span>
+            <span class="tag">Airflow · dbt · Postgres</span>
+          </div>
+          <h3>Stack Overflow Pipeline</h3>
+          <div class="role">Survey analytics pipeline, 2 years of data</div>
+          <p>A candidate/publish pattern so a bad run can never become the published answer — six real failures injected by hand, one of which genuinely got through first.</p>
+          <div class="stat-row">
+            <div class="stat"><b>154K+</b><span>Survey rows, 2 years</span></div>
+            <div class="stat"><b>7</b><span>Data-quality checks</span></div>
+          </div>
+          <div class="card-links">
+            <a href="https://github.com/swagatskalita092/Stack_Overflow_Pipeline" target="_blank" rel="noopener">GitHub ↗</a>
+            <a href="work.html#sopipeline">Failure sequence →</a>
+          </div>
+        </article>
+
+        <article class="project-card reveal reveal-delay-3">
+          <div class="tag-row">
+            <span class="tag accent">Open source</span>
+            <span class="tag">13 Claude skills · CI</span>
+          </div>
+          <h3>Fullproof Project Toolkit</h3>
+          <div class="role">Public methodology + skills, v1.0.0</div>
+          <p>The actual phase-by-phase method behind the three projects above, written down so anyone can follow it — idea to risk to adversarial proof to honest writeup.</p>
+          <div class="stat-row">
+            <div class="stat"><b>13</b><span>Importable skills</span></div>
+            <div class="stat"><b>DOI</b><span>Archived on Zenodo</span></div>
+          </div>
+          <div class="card-links">
+            <a href="https://github.com/swagatskalita092/fullproof-project-toolkit" target="_blank" rel="noopener">GitHub ↗</a>
+          </div>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <section class="alt-bg">
+    <div class="wrap">
+      <div class="section-head reveal" style="text-align:center; margin-left:auto; margin-right:auto;">
+        <span class="section-eyebrow">Why it's built this way</span>
+        <h2>Nothing claimed that wasn't proven.</h2>
+        <p style="margin-left:auto; margin-right:auto;">Every number on this site traces to a real test, a real commit, or a real run — the same rigor the Fullproof Project Toolkit exists to teach. No fabricated metrics, no rounded-up claims.</p>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="wrap footer-row">
+      <div class="footer-links">
+        <a href="https://github.com/swagatskalita092" target="_blank" rel="noopener">GitHub</a>
+        <a href="https://linkedin.com/in/swagat-s-kalita" target="_blank" rel="noopener">LinkedIn</a>
+        <a href="mailto:swagatskalita2001@gmail.com">Email</a>
+      </div>
+      <div class="footer-note">© <span data-year></span> Swagat Kalita. Passau, Germany.</div>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>

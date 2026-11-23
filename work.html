@@ -1,0 +1,170 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Work — Swagat Kalita</title>
+  <meta name="description" content="Four real, adversarially-tested projects: ClearScan, FlashBuy, the Stack Overflow Pipeline, and the Fullproof Project Toolkit.">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+  <nav class="site-nav">
+    <div class="wrap">
+      <a href="index.html" class="brand">Swagat<span>.</span></a>
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="work.html" aria-current="page">Work</a></li>
+        <li><a href="cv.html">CV</a></li>
+        <li><a href="about.html">About</a></li>
+      </ul>
+      <a href="about.html#contact" class="nav-cta">Get in touch</a>
+      <button class="nav-toggle" aria-label="Toggle menu" aria-expanded="false"><span></span><span></span><span></span></button>
+    </div>
+  </nav>
+
+  <div class="page-hero wrap">
+    <h1>Work</h1>
+    <p>Four projects, each built around one real invariant and tested against it on purpose. The two systems-level builds below include the specific failure that was found and how it was caught — not a claim that it "should" hold up.</p>
+  </div>
+
+  <section style="padding-top:24px;">
+    <div class="wrap">
+
+      <article class="project-card reveal" style="padding:40px; margin-bottom:28px;">
+        <div class="tag-row">
+          <span class="tag accent">Live product</span>
+          <span class="tag">FastAPI · React · Supabase · Stripe</span>
+        </div>
+        <h3 style="font-size:1.6rem;">ClearScan</h3>
+        <div class="role">Software Engineer · clearscan.fyi · Apr 2026 — Present</div>
+        <p>A real, live resume-scoring and job-matching platform — not a portfolio demo. Built and run end to end: a deterministic scoring engine (scikit-learn TF-IDF over a 137-skill taxonomy and 62 O*NET job profiles, a hand-set calibration curve so the same input scores the same way twice), Supabase Auth and PostgreSQL with Row Level Security, Stripe Checkout with idempotent signed webhooks across nine event types, and two AI-assisted features (bullet rewrites, cover letters) gated behind payment.</p>
+        <div class="stat-row">
+          <div class="stat"><b>1000+</b><span>Scans run</span></div>
+          <div class="stat"><b>87</b><span>Registered users</span></div>
+          <div class="stat"><b>238</b><span>Automated tests (215 backend, 23 frontend)</span></div>
+          <div class="stat"><b>500+</b><span>Commits on main</span></div>
+        </div>
+        <p style="font-size:0.9rem; color:var(--ink-faint);">Known gaps, stated rather than hidden: no staging environment, no error-tracking service yet, a couple of unused dependencies — full list in the public engineering dossier.</p>
+        <div class="card-links">
+          <a href="https://clearscan.fyi" target="_blank" rel="noopener">Live site ↗</a>
+          <a href="https://github.com/swagatskalita092/clearscan-engineering" target="_blank" rel="noopener">Engineering dossier ↗</a>
+        </div>
+      </article>
+
+      <article class="project-card reveal" id="flashbuy" style="padding:40px; margin-bottom:28px;">
+        <div class="tag-row">
+          <span class="tag accent">Chaos-tested</span>
+          <span class="tag">FastAPI · PostgreSQL · Redis · Docker · Locust</span>
+        </div>
+        <h3 style="font-size:1.6rem;">FlashBuy</h3>
+        <div class="role">Flash-sale checkout backend</div>
+        <p>A checkout API for limited, contended inventory. The invariant: fixed stock is never oversold, no matter how many buyers hit it at once. Built with row-level locking (<code>SELECT FOR UPDATE</code>), idempotency keys, a Redis-backed waiting room with token-bucket admission, and Redis-lock leader election across replicas with an epoch fencing token (added after outside feedback caught a split-brain gap).</p>
+        <div class="stat-row">
+          <div class="stat"><b>500 / 500</b><span>Checkouts, zero oversold</span></div>
+          <div class="stat"><b>p50 150ms / p99 1.2s</b><span>500 Locust users, 3 replicas</span></div>
+          <div class="stat"><b>21</b><span>Tests on every push/PR (CI)</span></div>
+        </div>
+
+        <h4 style="margin:20px 0 4px; font-size:0.95rem;">What actually broke, and what caught it</h4>
+        <div class="failure-seq">
+          <svg viewBox="0 0 760 170" role="img" aria-label="Failure sequence: connection pool exhausted under load, caught by requests failing with raw 500 errors, fixed by resizing the pool and returning a proper 503 on transient errors, verified by a regression test.">
+            <line class="fs-line" x1="120" y1="60" x2="330" y2="60"/>
+            <line class="fs-line" x1="450" y1="60" x2="650" y2="60"/>
+            <circle class="fs-node fail" cx="70" cy="60" r="34"/>
+            <circle class="fs-node catch" cx="390" cy="60" r="34"/>
+            <circle class="fs-node fix" cx="700" cy="60" r="34"/>
+            <text class="fs-label" x="70" y="65" text-anchor="middle">FAIL</text>
+            <text class="fs-label" x="390" y="65" text-anchor="middle">CAUGHT</text>
+            <text class="fs-label" x="700" y="65" text-anchor="middle">FIXED</text>
+            <text class="fs-detail" x="70" y="118" text-anchor="middle">Connection pool</text>
+            <text class="fs-detail" x="70" y="132" text-anchor="middle">exhausted under load</text>
+            <text class="fs-detail" x="390" y="118" text-anchor="middle">Requests failed with</text>
+            <text class="fs-detail" x="390" y="132" text-anchor="middle">raw 500 errors</text>
+            <text class="fs-detail" x="700" y="118" text-anchor="middle">Pool resized, proper</text>
+            <text class="fs-detail" x="700" y="132" text-anchor="middle">503 on transient errors</text>
+          </svg>
+        </div>
+        <p style="font-size:0.9rem; color:var(--ink-faint); margin-top:4px;">Commit a512729. A second bug (a post-commit false-failure race, e20d769) was found and fixed the same way. Chaos tests — killing the leader, Redis, and Postgres mid-sale by hand — found zero duplicate orders; killing Redis did lose in-memory waiting-room state (documented, not hidden).</p>
+
+        <div class="card-links">
+          <a href="https://github.com/swagatskalita092/flashbuy" target="_blank" rel="noopener">GitHub ↗</a>
+        </div>
+      </article>
+
+      <article class="project-card reveal" id="sopipeline" style="padding:40px; margin-bottom:28px;">
+        <div class="tag-row">
+          <span class="tag accent">Data correctness</span>
+          <span class="tag">Python · Airflow · dbt · PostgreSQL · Docker</span>
+        </div>
+        <h3 style="font-size:1.6rem;">Stack Overflow Survey Pipeline</h3>
+        <div class="role">Analytics pipeline over two real survey years</div>
+        <p>An Airflow + dbt + PostgreSQL pipeline over 154,000+ real Stack Overflow Developer Survey responses (2023 and 2024). The invariant: a bad or partial run can never become the published answer. Built on a candidate/publish pattern with a per-year monotonicity guard, required CI against hand-calculated fixtures, and a live, static dashboard regenerated from the real published data.</p>
+        <div class="stat-row">
+          <div class="stat"><b>154,621</b><span>Survey rows, 2 real years</span></div>
+          <div class="stat"><b>10</b><span>Orchestrated DAG tasks</span></div>
+          <div class="stat"><b>7</b><span>Data-quality checks (4 block the run)</span></div>
+        </div>
+
+        <h4 style="margin:20px 0 4px; font-size:0.95rem;">What actually broke, and what caught it</h4>
+        <div class="failure-seq">
+          <svg viewBox="0 0 760 170" role="img" aria-label="Failure sequence: a truncated source file was silently published, caught by a hand-run failure injection, fixed by a new row count drop data quality check that now blocks publication and keeps the previous release live.">
+            <line class="fs-line" x1="120" y1="60" x2="330" y2="60"/>
+            <line class="fs-line" x1="450" y1="60" x2="650" y2="60"/>
+            <circle class="fs-node fail" cx="70" cy="60" r="34"/>
+            <circle class="fs-node catch" cx="390" cy="60" r="34"/>
+            <circle class="fs-node fix" cx="700" cy="60" r="34"/>
+            <text class="fs-label" x="70" y="65" text-anchor="middle">FAIL</text>
+            <text class="fs-label" x="390" y="65" text-anchor="middle">CAUGHT</text>
+            <text class="fs-label" x="700" y="65" text-anchor="middle">FIXED</text>
+            <text class="fs-detail" x="70" y="118" text-anchor="middle">Truncated CSV</text>
+            <text class="fs-detail" x="70" y="132" text-anchor="middle">silently published</text>
+            <text class="fs-detail" x="390" y="118" text-anchor="middle">Found via a hand-run</text>
+            <text class="fs-detail" x="390" y="132" text-anchor="middle">failure injection</text>
+            <text class="fs-detail" x="700" y="118" text-anchor="middle">row_count_drop check</text>
+            <text class="fs-detail" x="700" y="132" text-anchor="middle">now blocks + 2 new tests</text>
+          </svg>
+        </div>
+        <p style="font-size:0.9rem; color:var(--ink-faint); margin-top:4px;">One of six hand-run failure injections against a real stack genuinely got through before this fix existed — the others (a killed loader, a killed database, a failed downstream test, two overlapping publishes) all held.</p>
+
+        <div class="card-links">
+          <a href="https://github.com/swagatskalita092/Stack_Overflow_Pipeline" target="_blank" rel="noopener">GitHub ↗</a>
+          <a href="https://swagatskalita092.github.io/Stack_Overflow_Pipeline/site/" target="_blank" rel="noopener">Live dashboard ↗</a>
+        </div>
+      </article>
+
+      <article class="project-card reveal" style="padding:40px;">
+        <div class="tag-row">
+          <span class="tag accent">Open source</span>
+          <span class="tag">Methodology · 13 Claude skills · CI</span>
+        </div>
+        <h3 style="font-size:1.6rem;">Fullproof Project Toolkit</h3>
+        <div class="role">Public methodology + skills, v1.0.0, DOI-archived</div>
+        <p>The actual phase-by-phase method behind the three projects above, written down so anyone can follow it: pick an idea, name the risks, make provisional design decisions, build in verified phases, test adversarially, verify independently, and document honestly including the bugs. Nine docs, thirteen importable Claude skills, a seven-domain idea bank, and two full idea-through-resume worked examples.</p>
+        <div class="stat-row">
+          <div class="stat"><b>13</b><span>Importable Claude skills</span></div>
+          <div class="stat"><b>9</b><span>Methodology docs</span></div>
+          <div class="stat"><b>DOI</b><span>Archived on Zenodo</span></div>
+        </div>
+        <div class="card-links">
+          <a href="https://github.com/swagatskalita092/fullproof-project-toolkit" target="_blank" rel="noopener">GitHub ↗</a>
+        </div>
+      </article>
+
+    </div>
+  </section>
+
+  <footer>
+    <div class="wrap footer-row">
+      <div class="footer-links">
+        <a href="https://github.com/swagatskalita092" target="_blank" rel="noopener">GitHub</a>
+        <a href="https://linkedin.com/in/swagat-s-kalita" target="_blank" rel="noopener">LinkedIn</a>
+        <a href="mailto:swagatskalita2001@gmail.com">Email</a>
+      </div>
+      <div class="footer-note">© <span data-year></span> Swagat Kalita. Passau, Germany.</div>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>
