@@ -23,16 +23,18 @@ document.addEventListener('DOMContentLoaded', () => {
   const yearEls = document.querySelectorAll('[data-year]');
   yearEls.forEach((el) => { el.textContent = new Date().getFullYear(); });
 
-  // Mobile nav toggle
+  // Mobile nav toggle — the capsule holds two separate <ul class="nav-links">
+  // groups either side of the brand, so the toggle opens/closes the whole
+  // capsule rather than a single list.
   const navToggle = document.querySelector('.nav-toggle');
-  const navLinks = document.querySelector('.nav-links');
-  if (navToggle && navLinks) {
+  const navCapsule = document.querySelector('.nav-capsule');
+  if (navToggle && navCapsule) {
     navToggle.addEventListener('click', () => {
-      const open = navLinks.classList.toggle('is-open');
+      const open = navCapsule.classList.toggle('is-open');
       navToggle.setAttribute('aria-expanded', open ? 'true' : 'false');
     });
-    navLinks.querySelectorAll('a').forEach((a) => {
-      a.addEventListener('click', () => navLinks.classList.remove('is-open'));
+    navCapsule.querySelectorAll('.nav-links a').forEach((a) => {
+      a.addEventListener('click', () => navCapsule.classList.remove('is-open'));
     });
   }
 });
