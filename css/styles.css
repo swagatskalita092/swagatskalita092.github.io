@@ -398,13 +398,14 @@ a { color: inherit; text-decoration: none; }
 .hero-note {
   position: absolute;
   z-index: 3;
-  top: -2%;
-  left: -210px;
-  width: 190px;
+  top: 50%;
+  transform: translateY(-50%);
+  left: -300px;
+  width: 240px;
   font-style: italic;
   font-weight: 500;
   font-size: 0.95rem;
-  line-height: 1.45;
+  line-height: 1.5;
   color: var(--ink-soft);
   text-align: left;
 }
@@ -466,7 +467,7 @@ a { color: inherit; text-decoration: none; }
   .fact-card.c1 { left: -90px; }
   .fact-card.c2 { right: -100px; }
   .fact-card.c3 { right: -90px; }
-  .hero-note { left: -140px; width: 160px; }
+  .hero-note { left: -160px; width: 180px; }
 }
 
 /* Small screens: drop the floating-card overlay entirely in favour of a
@@ -501,9 +502,12 @@ a { color: inherit; text-decoration: none; }
 
   .hero-note {
     position: static;
+    transform: none;
     width: 100%;
     max-width: 320px;
     text-align: center;
+    order: -1;
+    margin-bottom: 4px;
   }
   .hero-note .quote-mark { text-align: center; }
 
