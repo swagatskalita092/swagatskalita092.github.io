@@ -69,15 +69,17 @@
       <article class="project-card reveal" id="flashbuy" style="padding:40px; margin-bottom:28px;">
         <div class="tag-row">
           <span class="tag accent">Chaos-tested</span>
-          <span class="tag">FastAPI · PostgreSQL · Redis · Docker · Locust</span>
+          <span class="tag">FastAPI · PostgreSQL · Redis · RabbitMQ · Docker · Locust</span>
         </div>
         <h3 style="font-size:1.6rem;">FlashBuy</h3>
         <div class="role">Flash-sale checkout backend</div>
         <p>A checkout API for limited stock that a lot of people want at once. The rule it has to hold: stock can never be oversold, no matter how many buyers hit it at the same time. It uses row-level locking (<code>SELECT FOR UPDATE</code>), idempotency keys, a Redis-backed waiting room with token-bucket admission, and leader election across replicas with an epoch fencing token - that last piece got added after someone pointed out a split-brain gap in an earlier version.</p>
+        <p>A later piece proves a different rule: once an order is confirmed, a completely separate fulfillment service, its own database, no shared transaction, has to find out reliably. That's a transactional outbox: confirming an order writes its event in the same commit as the status change, a dedicated publisher only marks it sent once RabbitMQ confirms receipt, and the consumer keeps its own idempotent inbox so a duplicate delivery never becomes a duplicate job. Chaos-testing it against the real containers, publisher crash, consumer crash, a sustained broker outage, a poison message, found and fixed four real bugs along the way.</p>
         <div class="stat-row">
           <div class="stat"><b>500 / 500</b><span>Checkouts, zero oversold</span></div>
           <div class="stat"><b>p50 150ms / p99 1.2s</b><span>500 Locust users, 3 replicas</span></div>
           <div class="stat"><b>21</b><span>Tests on every push/PR (CI)</span></div>
+          <div class="stat"><b>4</b><span>Bugs found & fixed in outbox chaos tests</span></div>
         </div>
 
         <h4 style="margin:20px 0 4px; font-size:0.95rem;">What actually broke, and what caught it</h4>

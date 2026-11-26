@@ -115,10 +115,11 @@
 
           <div class="cv-entry">
             <div class="cv-entry-head"><span>FlashBuy: Flash-Sale Checkout Backend</span><span><a href="https://github.com/swagatskalita092/flashbuy" target="_blank" rel="noopener">GitHub</a></span></div>
-            <div class="cv-entry-sub"><span>FastAPI, PostgreSQL, Redis, Docker, Locust</span></div>
+            <div class="cv-entry-sub"><span>FastAPI, PostgreSQL, Redis, RabbitMQ, Docker, Locust</span></div>
             <ul>
               <li>Built a flash-sale checkout API with row-level locking, idempotency keys and a Redis waiting room (20 admissions per second). In a load test with 500 users on three replicas: 500 of 500 checkouts, zero oversold, p99 1.2s.</li>
               <li>Added leader election with an epoch fencing token after outside feedback; fixed two load bugs. Stopped the leader, Redis and Postgres mid-sale manually: no duplicate orders; Redis loss dropped waiting-room state (documented).</li>
+              <li>Added a transactional outbox so a separate fulfillment service, its own database, learns of a confirmed order reliably over RabbitMQ. Chaos-tested it (publisher crash, consumer crash, broker outage, poison message) against real containers; found and fixed four real bugs in the process.</li>
             </ul>
           </div>
 
