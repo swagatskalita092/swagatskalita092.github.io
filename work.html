@@ -39,7 +39,7 @@
 
   <div class="page-hero wrap">
     <h1>Work</h1>
-    <p>Four projects, each built around one real rule, tested on purpose to see if that rule actually holds. For the two systems-level builds below, I've included the specific failure I found and how I caught it, not just a claim that things "should" work.</p>
+    <p>Four projects, each built around one real rule, tested on purpose to see if that rule actually holds. For the two systems-level builds below, I've included the specific failure I found and how I caught it, not just a claim that things "should" work. Two of them also put AI to direct use rather than just discussing it: ClearScan's paid features and the Fullproof Project Toolkit's own agent are production applications, not experiments.</p>
   </div>
 
   <section style="padding-top:24px;">
@@ -52,16 +52,17 @@
         </div>
         <h3 style="font-size:1.6rem;">ClearScan</h3>
         <div class="role">Software Engineer · clearscan.fyi · Apr 2026 — Present</div>
-        <p>ClearScan is a real, live resume-scoring and job-matching platform, not a portfolio demo. I built and run it end to end. The scoring engine is deterministic: scikit-learn TF-IDF over a 137-skill taxonomy and 62 O*NET job profiles, with a hand-set calibration curve so the same input scores the same way every time. It runs on Supabase Auth and PostgreSQL with row-level security, and Stripe Checkout handles payments with signed, idempotent webhooks across nine event types. Two AI-assisted features, bullet rewrites and cover letters, sit behind the paywall.</p>
+        <p>ClearScan is a real, live resume-scoring and job-matching platform, not a portfolio demo. I built and run it end to end. The scoring engine is deterministic: scikit-learn TF-IDF over a 137-skill taxonomy and 62 O*NET job profiles, with a hand-set calibration curve so the same input scores the same way every time. It runs on Supabase Auth and PostgreSQL with row-level security, and Stripe Checkout handles payments with signed, idempotent webhooks across nine event types. Two paid features, bullet rewrites and cover letters, apply an LLM on top of that deterministic core rather than replacing it.</p>
         <div class="stat-row">
           <div class="stat"><b>1000+</b><span>Scans run</span></div>
           <div class="stat"><b>238</b><span>Automated tests (215 backend, 23 frontend)</span></div>
-          <div class="stat"><b>500+</b><span>Commits on main</span></div>
+          <div class="stat"><b>580+</b><span>Commits on main</span></div>
         </div>
         <p style="font-size:0.9rem; color:var(--ink-faint);">I'd rather state the gaps than hide them: no staging environment yet, no error-tracking service, and a couple of unused dependencies. The full list is in the public engineering dossier.</p>
         <div class="card-links">
           <a href="https://clearscan.fyi" target="_blank" rel="noopener">Live site ↗</a>
           <a href="https://github.com/swagatskalita092/clearscan-engineering" target="_blank" rel="noopener">Engineering dossier ↗</a>
+          <a href="https://doi.org/10.5281/zenodo.24084738" target="_blank" rel="noopener">Zenodo DOI ↗</a>
         </div>
       </article>
 
@@ -73,11 +74,11 @@
         <h3 style="font-size:1.6rem;">FlashBuy</h3>
         <div class="role">Flash-sale checkout backend</div>
         <p>A checkout API for limited stock that a lot of people want at once. The rule it has to hold: stock can never be oversold, no matter how many buyers hit it at the same time. It uses row-level locking (<code>SELECT FOR UPDATE</code>), idempotency keys, a Redis-backed waiting room with token-bucket admission, and leader election across replicas with an epoch fencing token - that last piece got added after someone pointed out a split-brain gap in an earlier version.</p>
-        <p>A later piece proves a different rule: once an order is confirmed, a completely separate fulfillment service, its own database, no shared transaction, has to find out reliably. That's a transactional outbox: confirming an order writes its event in the same commit as the status change, a dedicated publisher only marks it sent once RabbitMQ confirms receipt, and the consumer keeps its own idempotent inbox so a duplicate delivery never becomes a duplicate job. Chaos-testing it against the real containers, publisher crash, consumer crash, a sustained broker outage, a poison message, found and fixed four real bugs along the way.</p>
+        <p>A later piece proves a different rule: once an order is confirmed, a completely separate fulfillment service, with its own database and no shared transaction, has to find out reliably. That's a transactional outbox: confirming an order writes its event in the same commit as the status change, a dedicated publisher only marks it sent once RabbitMQ confirms receipt, and the consumer keeps its own idempotent inbox so a duplicate delivery never becomes a duplicate job. Chaos-testing it against the real containers, publisher crash, consumer crash, a sustained broker outage, a poison message, found and fixed four real bugs along the way.</p>
         <div class="stat-row">
           <div class="stat"><b>500 / 500</b><span>Checkouts, zero oversold</span></div>
           <div class="stat"><b>p50 150ms / p99 1.2s</b><span>500 Locust users, 3 replicas</span></div>
-          <div class="stat"><b>21</b><span>Tests on every push/PR (CI)</span></div>
+          <div class="stat"><b>28</b><span>Tests on every push/PR (CI)</span></div>
           <div class="stat"><b>4</b><span>Bugs found & fixed in outbox chaos tests</span></div>
         </div>
 
@@ -104,6 +105,7 @@
 
         <div class="card-links">
           <a href="https://github.com/swagatskalita092/flashbuy" target="_blank" rel="noopener">GitHub ↗</a>
+          <a href="https://doi.org/10.5281/zenodo.24279725" target="_blank" rel="noopener">Zenodo DOI ↗</a>
         </div>
       </article>
 
@@ -145,6 +147,7 @@
         <div class="card-links">
           <a href="https://github.com/swagatskalita092/Stack_Overflow_Pipeline" target="_blank" rel="noopener">GitHub ↗</a>
           <a href="https://swagatskalita092.github.io/Stack_Overflow_Pipeline/site/" target="_blank" rel="noopener">Live dashboard ↗</a>
+          <a href="https://doi.org/10.5281/zenodo.24428050" target="_blank" rel="noopener">Zenodo DOI ↗</a>
         </div>
       </article>
 
@@ -155,15 +158,16 @@
         </div>
         <h3 style="font-size:1.6rem;">Fullproof Project Toolkit</h3>
         <div class="role">Public methodology, skills &amp; agent, v1.0.0, DOI-archived</div>
-        <p>This is the actual phase-by-phase method behind the three projects above, written down so anyone can follow it: pick an idea, name the risks, make provisional design decisions, build in verified phases, test adversarially, verify independently, and document honestly, bugs included. It comes as nine docs, thirteen importable Claude skills, a seven-domain idea bank, and two full idea-through-resume worked examples. I also packaged the core methodology as a standalone Claude Code agent: it runs the whole pipeline on its own and hands back one verified report, and it even dispatches a separate agent for its own second opinion and verification steps instead of just checking its own work.</p>
+        <p>This is the actual phase-by-phase method behind the three projects above, written down so anyone can follow it: pick an idea, name the risks, make provisional design decisions, build in verified phases, test adversarially, verify independently, and document honestly, bugs included. It ships as nine docs, thirteen importable Claude skills, a seven-domain idea bank, and two full idea-through-resume worked examples, with a real CI check that runs on every push. I also packaged the core methodology as a standalone Claude Code agent, a second production use of applied AI alongside ClearScan: it runs the whole pipeline on its own and hands back one verified report, dispatching a genuinely separate agent for its own second opinion and verification steps instead of just checking its own work.</p>
         <div class="stat-row">
           <div class="stat"><b>13</b><span>Importable Claude skills</span></div>
           <div class="stat"><b>1</b><span>Autonomous pipeline agent</span></div>
           <div class="stat"><b>9</b><span>Methodology docs</span></div>
-          <div class="stat"><b>DOI</b><span>Archived on Zenodo</span></div>
+          <div class="stat"><a href="https://doi.org/10.5281/zenodo.24427993" target="_blank" rel="noopener">DOI</a><span>Archived on Zenodo</span></div>
         </div>
         <div class="card-links">
           <a href="https://github.com/swagatskalita092/fullproof-project-toolkit" target="_blank" rel="noopener">GitHub ↗</a>
+          <a href="https://doi.org/10.5281/zenodo.24427993" target="_blank" rel="noopener">Zenodo DOI ↗</a>
         </div>
       </article>
 

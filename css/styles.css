@@ -103,7 +103,7 @@ a:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-
   transition: color 0.2s ease, border-color 0.2s ease;
 }
 
-.nav-links a:hover { color: var(--ink); }
+.nav-links a:hover { color: var(--ink); border-color: var(--border); }
 
 .nav-links a[aria-current="page"] {
   color: var(--accent);
@@ -631,6 +631,9 @@ section { padding: 80px 0; }
 
 .tag.accent { background: var(--accent); color: #fff; }
 
+.tag { transition: transform 0.18s ease, box-shadow 0.18s ease; }
+.tag:hover { transform: translateY(-2px); box-shadow: var(--shadow-sm); }
+
 .project-card h3 { font-size: 1.3rem; margin: 0; font-weight: 800; letter-spacing: -0.005em; }
 .project-card .role { font-size: 0.85rem; color: var(--ink-faint); font-weight: 600; margin-top: -10px; }
 .project-card p { margin: 0; color: var(--ink-soft); font-size: 0.95rem; }
@@ -645,8 +648,19 @@ section { padding: 80px 0; }
 .stat {
   display: flex;
   flex-direction: column;
+  transition: transform 0.18s ease;
 }
-.stat b { font-size: 1.1rem; font-weight: 800; font-family: 'Source Serif 4', serif; }
+.stat:hover { transform: translateY(-2px); }
+.stat b, .stat a {
+  font-size: 1.1rem;
+  font-weight: 800;
+  font-family: 'Source Serif 4', serif;
+  color: var(--ink);
+  transition: color 0.18s ease;
+}
+.stat a { text-decoration: none; border-bottom: 2px solid transparent; }
+.stat:hover b, .stat a:hover { color: var(--accent); }
+.stat a:hover { border-bottom-color: var(--accent); }
 .stat span { font-size: 0.72rem; color: var(--ink-faint); font-weight: 600; text-transform: uppercase; letter-spacing: 0.04em; }
 
 .project-card .card-links {
@@ -660,9 +674,10 @@ section { padding: 80px 0; }
   font-weight: 700;
   font-size: 0.86rem;
   border-bottom: 2px solid var(--accent-soft);
-  transition: border-color 0.2s ease;
+  transition: border-color 0.2s ease, transform 0.2s ease;
+  display: inline-block;
 }
-.card-links a:hover { border-color: var(--accent); }
+.card-links a:hover { border-color: var(--accent); transform: translateX(2px); }
 
 /* ---------- Footer ---------- */
 
