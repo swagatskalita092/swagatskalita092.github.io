@@ -396,8 +396,10 @@ section { padding: 80px 0; }
   color: var(--accent);
   border-bottom: 1px solid var(--accent);
   padding-bottom: 2px;
+  display: inline-block;
+  transition: transform 0.2s ease, opacity 0.2s ease;
 }
-.ep-link:hover { opacity: 0.75; }
+.ep-link:hover { transform: translateX(5px); }
 
 .ep-evidence {
   background: var(--surface);
@@ -612,7 +614,7 @@ section { padding: 80px 0; }
   transition: transform 0.25s ease, box-shadow 0.25s ease;
 }
 
-.project-card:hover { transform: translateY(-4px); box-shadow: var(--shadow); }
+.project-card:hover { transform: translateY(-7px); box-shadow: var(--shadow); }
 
 .project-card .tag-row {
   display: flex;
@@ -631,8 +633,12 @@ section { padding: 80px 0; }
 
 .tag.accent { background: var(--accent); color: #fff; }
 
-.tag { transition: transform 0.18s ease, box-shadow 0.18s ease; }
-.tag:hover { transform: translateY(-2px); box-shadow: var(--shadow-sm); }
+.tag {
+  transition: transform 0.2s ease, background-color 0.2s ease, color 0.2s ease, box-shadow 0.2s ease;
+  cursor: default;
+}
+.tag:hover { transform: translateY(-3px) scale(1.05); background: var(--accent); color: #fff; box-shadow: var(--shadow-sm); }
+.tag.accent:hover { background: var(--ink); }
 
 .project-card h3 { font-size: 1.3rem; margin: 0; font-weight: 800; letter-spacing: -0.005em; }
 .project-card .role { font-size: 0.85rem; color: var(--ink-faint); font-weight: 600; margin-top: -10px; }
@@ -648,18 +654,20 @@ section { padding: 80px 0; }
 .stat {
   display: flex;
   flex-direction: column;
-  transition: transform 0.18s ease;
+  transition: transform 0.2s ease;
+  cursor: default;
 }
-.stat:hover { transform: translateY(-2px); }
+.stat:hover { transform: translateY(-5px); }
 .stat b, .stat a {
+  display: inline-block;
   font-size: 1.1rem;
   font-weight: 800;
   font-family: 'Source Serif 4', serif;
   color: var(--ink);
-  transition: color 0.18s ease;
+  transition: color 0.2s ease, transform 0.2s ease;
 }
 .stat a { text-decoration: none; border-bottom: 2px solid transparent; }
-.stat:hover b, .stat a:hover { color: var(--accent); }
+.stat:hover b, .stat a:hover { color: var(--accent); transform: scale(1.1); }
 .stat a:hover { border-bottom-color: var(--accent); }
 .stat span { font-size: 0.72rem; color: var(--ink-faint); font-weight: 600; text-transform: uppercase; letter-spacing: 0.04em; }
 
@@ -673,11 +681,12 @@ section { padding: 80px 0; }
 .card-links a {
   font-weight: 700;
   font-size: 0.86rem;
+  color: var(--ink);
   border-bottom: 2px solid var(--accent-soft);
-  transition: border-color 0.2s ease, transform 0.2s ease;
+  transition: border-color 0.2s ease, transform 0.2s ease, color 0.2s ease;
   display: inline-block;
 }
-.card-links a:hover { border-color: var(--accent); transform: translateX(2px); }
+.card-links a:hover { color: var(--accent); border-color: var(--accent); transform: translateX(5px); }
 
 /* ---------- Footer ---------- */
 
